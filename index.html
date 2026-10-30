@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sebulime Secondary School | Excellence, Integrity & Leadership</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        emerald: {
+                            900: '#022c22',
+                            800: '#064e3b',
+                            700: '#047857',
+                            600: '#059669',
+                            DEFAULT: '#065f46'
+                        },
+                        gold: {
+                            500: '#f59e0b',
+                            600: '#d97706',
+                            700: '#b45309',
+                            DEFAULT: '#d97706',
+                            light: '#fef3c7'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        serif: ['"Playfair Display"', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .page-section {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+        .page-section.active {
+            display: block;
+            opacity: 1;
+        }
+        .nav-link.active {
+            color: #f59e0b;
+            border-bottom: 2px solid #f59e0b;
+        }
+    </style>
+</head>
+<body class="font-sans bg-slate-50 text-slate-800 flex flex-col min-h-screen">
+
+    <!-- TOP INFORMATION ANNOUNCEMENT BAR -->
+    <div class="bg-emerald-900 text-slate-200 text-xs py-2 px-4 border-b border-emerald-800">
+        <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
+            <div class="flex items-center gap-6">
+                <span><i class="fa-solid fa-phone text-gold-500 mr-2"></i> +256 (0) 700 123 456</span>
+                <span><i class="fa-solid fa-envelope text-gold-500 mr-2"></i> info@sebulime.edu.ug</span>
+                <span class="hidden md:inline"><i class="fa-solid fa-location-dot text-gold-500 mr-2"></i> Kampala, Uganda</span>
+            </div>
+            <div class="flex items-center gap-3">
+                <span class="bg-gold-600 text-white px-2.5 py-0.5 rounded-full text-[11px] font-bold tracking-wide uppercase">2026/2027 Admissions Open</span>
+                <button onclick="navigateTo('admissions')" class="hover:underline text-gold-500 font-semibold">Apply Online &rarr;</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN HEADER & NAVIGATION -->
+    <header class="sticky top-0 z-50 bg-emerald-800 text-white shadow-xl border-b border-emerald-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                
+                <!-- School Logo & Title -->
+                <div class="flex items-center gap-3 cursor-pointer" onclick="navigateTo('home')">
+                    <div class="w-12 h-12 bg-gold-600 rounded-full flex items-center justify-center text-white font-bold text-2xl shadow-lg border-2 border-amber-300">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                    <div>
+                        <h1 class="font-serif font-bold text-xl leading-tight text-white tracking-wide">SEBULIME</h1>
+                        <p class="text-[11px] text-amber-300 font-bold uppercase tracking-widest">Secondary School</p>
+                    </div>
+                </div>
+
+                <!-- Desktop Navigation Links (All 8 Pages) -->
+                <nav class="hidden xl:flex items-center space-x-1">
+                    <button onclick="navigateTo('home')" class="nav-link px-3 py-2 text-xs font-semibold hover:text-amber-300 transition-colors uppercase tracking-wider" data-page="home">Home</button>
+                    <button onclick="navigateTo('about')" class="nav-link px-3 py-2 text-xs font-semibold hover:text-amber-300 transition-colors uppercase tracking-wider" data-page="about">About Us</button>
+                    <button onclick="navigateTo('academics')" class="nav-link px-3 py-2 text-xs font-semibold hover:text-amber-300 transition-colors uppercase tracking-wider" data-page="academics">Academics</button>
+                    <button onclick="navigateTo('admissions')" class="nav-link px-3 py-2 text-xs font-semibold hover:text-amber-300 transition-colors uppercase tracking-wider" data-page="admissions">Admissions</button>
+                    <button onclick="navigateTo('studentlife')" class="nav-link px-3 py-2 text-xs font-semibold hover:text-amber-300 transition-colors uppercase tracking-wider" data-page="studentlife">Student Life</button>
+                    <button onclick="navigateTo('gallery')" class="nav-link px-3 py-2 text-xs font-semibold hover:text-amber-300 transition-colors uppercase tracking-wider" data-page="gallery">Gallery</button>
+                    <button onclick="navigateTo('news')" class="nav-link px-3 py-2 text-xs font-semibold hover:text-amber-300 transition-colors uppercase tracking-wider" data-page="news">News &amp; Events</button>
+                    <button onclick="navigateTo('contact')" class="nav-link px-3 py-2 text-xs font-semibold hover:text-amber-300 transition-colors uppercase tracking-wider" data-page="contact">Contact</button>
+                </nav>
+
+                <!-- Header CTA Button -->
+                <div class="hidden xl:block">
+                    <button onclick="navigateTo('admissions')" class="bg-gold-600 hover:bg-gold-700 text-white font-bold px-5 py-2.5 rounded-lg text-xs uppercase tracking-wider transition-all shadow-md">
+                        Enroll Today
+                    </button>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="xl:hidden">
+                    <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="p-2 rounded-md text-white hover:bg-emerald-700 focus:outline-none">
+                        <i class="fa-solid fa-bars text-2xl" id="menu-icon"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Drawer -->
+        <div id="mobile-menu" class="hidden xl:hidden bg-emerald-800 border-t border-emerald-700 px-4 pt-3 pb-6 space-y-2">
+            <button onclick="navigateTo('home'); toggleMobileMenu()" class="block w-full text-left px-3 py-2 rounded-md text-sm font-semibold text-white hover:bg-emerald-700">Home</button>
+            <button onclick="navigateTo('about'); toggleMobileMenu()" class="block w-full text-left px-3 py-2 rounded-md text-sm font-semibold text-white hover:bg-emerald-700">About Us</button>
+            <button onclick="navigateTo('academics'); toggleMobileMenu()" class="block w-full text-left px-3 py-2 rounded-md text-sm font-semibold text-white hover:bg-emerald-700">Academics</button>
+            <button onclick="navigateTo('admissions'); toggleMobileMenu()" class="block w-full text-left px-3 py-2 rounded-md text-sm font-semibold text-white hover:bg-emerald-700">Admissions</button>
+            <button onclick="navigateTo('studentlife'); toggleMobileMenu()" class="block w-full text-left px-3 py-2 rounded-md text-sm font-semibold text-white hover:bg-emerald-700">Student Life</button>
+            <button onclick="navigateTo('gallery'); toggleMobileMenu()" class="block w-full text-left px-3 py-2 rounded-md text-sm font-semibold text-white hover:bg-emerald-700">Gallery</button>
+            <button onclick="navigateTo('news'); toggleMobileMenu()" class="block w-full text-left px-3 py-2 rounded-md text-sm font-semibold text-white hover:bg-emerald-700">News & Events</button>
+            <button onclick="navigateTo('contact'); toggleMobileMenu()" class="block w-full text-left px-3 py-2 rounded-md text-sm font-semibold text-white hover:bg-emerald-700">Contact Us</button>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT AREA -->
+    <main class="flex-grow">
+
+        <!-- ================= PAGE 1: HOME ================= -->
+        <section id="page-home" class="page-section active">
+            
+            <!-- Hero Banner featuring 1000131693.jpg -->
+            <div class="relative bg-gradient-to-r from-emerald-900 via-emerald-800 to-emerald-700 text-white overflow-hidden py-16 lg:py-24">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                    <div class="grid lg:grid-cols-12 gap-12 items-center">
+                        <div class="lg:col-span-7 space-y-6">
+                            <span class="inline-flex items-center gap-2 bg-emerald-700/60 border border-gold-500/40 text-amber-300 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider shadow-sm">
+                                <i class="fa-solid fa-star text-gold-500"></i> Welcome to Sebulime Secondary School
+                            </span>
+                            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold tracking-tight leading-tight">
+                                Nurturing Minds, <span class="text-amber-300 italic">Inspiring Leaders</span>.
+                            </h1>
+                            <p class="text-slate-100 text-base sm:text-lg leading-relaxed max-w-2xl font-normal">
+                                Welcome to Sebulime Secondary School—a premier educational institution offering holistic O-Level and A-Level curricula, state-of-the-art facilities, and a supportive environment designed to unleash every student's full potential.
+                            </p>
+                            <div class="flex flex-wrap gap-4 pt-2">
+                                <button onclick="navigateTo('admissions')" class="bg-gold-600 hover:bg-gold-700 text-white font-bold px-7 py-3.5 rounded-xl transition-all shadow-lg flex items-center gap-3">
+                                    Apply For Admission <i class="fa-solid fa-arrow-right"></i>
+                                </button>
+                                <button onclick="navigateTo('about')" class="bg-white/10 hover:bg-white/20 text-white font-semibold px-7 py-3.5 rounded-xl border border-white/30 transition-all backdrop-blur-sm">
+                                    Learn More
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Hero Image Attachment (1000131693.jpg with Unsplash fallback) -->
+                        <div class="lg:col-span-5">
+                            <div class="relative bg-white/10 p-3 rounded-2xl border border-white/20 shadow-2xl backdrop-blur-md">
+                                <div class="overflow-hidden rounded-xl h-96 relative group cursor-pointer" onclick="openLightbox('1000131693.jpg', 'International Learning Environment Showcase')">
+                                    <img src="1000131693.jpg" alt="Sebulime School International Learning Environment" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=800&q=80';">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-emerald-900/90 via-transparent to-transparent"></div>
+                                    <div class="absolute bottom-5 left-5 right-5 text-white">
+                                        <span class="bg-gold-600 text-white text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded mb-2 inline-block">International Standard</span>
+                                        <p class="font-serif font-bold text-xl text-white">World-Class Secondary Education</p>
+                                        <p class="text-xs text-slate-200 mt-1">Uploaded Image: 1000131693.jpg</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Key Statistics Bar -->
+            <div class="bg-emerald-900 border-y border-emerald-800 py-10 text-white">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                        <div class="p-4 rounded-xl bg-emerald-800/50 border border-emerald-700/50">
+                            <i class="fa-solid fa-award text-amber-300 text-3xl mb-2"></i>
+                            <div class="text-3xl font-bold font-serif text-white">99.4%</div>
+                            <div class="text-xs text-slate-200 mt-1 uppercase font-semibold tracking-wider">UNEB Pass Rate</div>
+                        </div>
+                        <div class="p-4 rounded-xl bg-emerald-800/50 border border-emerald-700/50">
+                            <i class="fa-solid fa-user-graduate text-amber-300 text-3xl mb-2"></i>
+                            <div class="text-3xl font-bold font-serif text-white">1,500+</div>
+                            <div class="text-xs text-slate-200 mt-1 uppercase font-semibold tracking-wider">Enrolled Students</div>
+                        </div>
+                        <div class="p-4 rounded-xl bg-emerald-800/50 border border-emerald-700/50">
+                            <i class="fa-solid fa-chalkboard-user text-amber-300 text-3xl mb-2"></i>
+                            <div class="text-3xl font-bold font-serif text-white">65+</div>
+                            <div class="text-xs text-slate-200 mt-1 uppercase font-semibold tracking-wider">Qualified Staff</div>
+                        </div>
+                        <div class="p-4 rounded-xl bg-emerald-800/50 border border-emerald-700/50">
+                            <i class="fa-solid fa-trophy text-amber-300 text-3xl mb-2"></i>
+                            <div class="text-3xl font-bold font-serif text-white">30+</div>
+                            <div class="text-xs text-slate-200 mt-1 uppercase font-semibold tracking-wider">Clubs & Sports</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Director Welcome Section featuring 1000080351.jpg -->
+            <div class="py-20 bg-white">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="grid md:grid-cols-12 gap-12 items-center">
+                        
+                        <!-- Image Attachment (1000080351.jpg with Unsplash fallback) -->
+                        <div class="md:col-span-5">
+                            <div class="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-gold-600 group cursor-pointer" onclick="openLightbox('1000080351.jpg', 'Director & Founder - Mr. Sebulime')">
+                                <img src="1000080351.jpg" alt="Mr. Sebulime - Founder & Director" class="w-full h-[450px] object-cover object-top group-hover:scale-105 transition-transform duration-500" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=800&q=80';">
+                                <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-emerald-900 via-emerald-900/80 to-transparent p-6 text-white">
+                                    <h4 class="font-bold text-xl font-serif">Mr. Sebulime</h4>
+                                    <p class="text-xs text-amber-300 font-bold uppercase tracking-wider">Founder &amp; Executive Director</p>
+                                    <p class="text-[10px] text-slate-300 mt-1">File: 1000080351.jpg</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="md:col-span-7 space-y-6">
+                            <span class="text-emerald-700 font-bold uppercase tracking-widest text-xs bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200">Director's Welcome Message</span>
+                            <h2 class="text-3xl sm:text-4xl font-serif font-bold text-emerald-800 leading-tight">Empowering Generations with Discipline, Faith & Knowledge</h2>
+                            <p class="text-slate-600 leading-relaxed">
+                                "Welcome to Sebulime Secondary School. Our mandate is simple yet profound: to nurture young minds into confident, knowledgeable, and morally upright citizens ready to tackle global challenges."
+                            </p>
+                            <p class="text-slate-600 leading-relaxed">
+                                With a focus on modern science education, humanities, leadership development, and spiritual growth, Sebulime Secondary School offers a safe and inspiring space for every learner to excel.
+                            </p>
+                            <div class="pt-2 flex items-center gap-4">
+                                <button onclick="navigateTo('about')" class="bg-emerald-800 text-white font-bold px-6 py-3 rounded-lg text-xs uppercase tracking-wider hover:bg-emerald-700 transition-colors shadow-md">
+                                    Read Director's Full Bio &rarr;
+                                </button>
+                                <button onclick="navigateTo('contact')" class="text-emerald-700 font-bold text-xs uppercase tracking-wider hover:underline">
+                                    Contact Office
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Features Grid -->
+            <div class="py-16 bg-slate-100 border-t border-slate-200">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center max-w-3xl mx-auto mb-12">
+                        <h2 class="text-3xl font-serif font-bold text-emerald-800">Why Choose Sebulime Secondary School?</h2>
+                        <p class="text-slate-600 text-sm mt-2">Discover what sets our educational experience apart.</p>
+                    </div>
+
+                    <div class="grid md:grid-cols-3 gap-8">
+                        <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 hover:shadow-md transition-shadow">
+                            <div class="w-14 h-14 bg-emerald-50 text-emerald-700 rounded-2xl flex items-center justify-center text-2xl mb-6 border border-emerald-100">
+                                <i class="fa-solid fa-microscope"></i>
+                            </div>
+                            <h3 class="font-serif font-bold text-lg text-emerald-800 mb-3">Modern Science & ICT Labs</h3>
+                            <p class="text-xs text-slate-600 leading-relaxed">Fully functional physics, chemistry, biology, and computer labs providing students with essential practical hands-on experience.</p>
+                        </div>
+
+                        <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 hover:shadow-md transition-shadow">
+                            <div class="w-14 h-14 bg-amber-50 text-gold-600 rounded-2xl flex items-center justify-center text-2xl mb-6 border border-amber-100">
+                                <i class="fa-solid fa-book-bookmark"></i>
+                            </div>
+                            <h3 class="font-serif font-bold text-lg text-emerald-800 mb-3">Rigorous UNEB Curriculum</h3>
+                            <p class="text-xs text-slate-600 leading-relaxed">Top-tier academic training for both O-Level (UCE) and A-Level (UACE) national examinations with continuous assessments.</p>
+                        </div>
+
+                        <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 hover:shadow-md transition-shadow">
+                            <div class="w-14 h-14 bg-emerald-50 text-emerald-700 rounded-2xl flex items-center justify-center text-2xl mb-6 border border-emerald-100">
+                                <i class="fa-solid fa-people-group"></i>
+                            </div>
+                            <h3 class="font-serif font-bold text-lg text-emerald-800 mb-3">Holistic Student Life</h3>
+                            <p class="text-xs text-slate-600 leading-relaxed">Vibrant sports activities, debate clubs, music & drama, leadership prefect councils, and community outreach.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= PAGE 2: ABOUT US ================= -->
+        <section id="page-about" class="page-section py-16">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <span class="text-gold-600 font-bold text-xs uppercase tracking-widest bg-amber-50 px-3 py-1 rounded-full border border-amber-200">About Sebulime Secondary School</span>
+                    <h2 class="text-3xl sm:text-4xl font-serif font-bold text-emerald-800 mt-3">Our History, Vision & Strategic Values</h2>
+                    <p class="text-slate-600 mt-2">Guiding future leaders with academic excellence and sound moral values.</p>
+                </div>
+
+                <!-- Strategic Vision Grid -->
+                <div class="grid md:grid-cols-3 gap-8 mb-16">
+                    <div class="bg-white p-8 rounded-2xl shadow-md border-t-4 border-emerald-800">
+                        <div class="w-12 h-12 bg-emerald-800 text-amber-300 rounded-xl flex items-center justify-center text-xl mb-4">
+                            <i class="fa-solid fa-eye"></i>
+                        </div>
+                        <h3 class="text-xl font-serif font-bold text-emerald-800 mb-3">Our Vision</h3>
+                        <p class="text-slate-600 text-xs leading-relaxed">To be a leading secondary school recognized nationally and internationally for academic greatness, character development, and scientific innovation.</p>
+                    </div>
+
+                    <div class="bg-white p-8 rounded-2xl shadow-md border-t-4 border-gold-600">
+                        <div class="w-12 h-12 bg-gold-600 text-white rounded-xl flex items-center justify-center text-xl mb-4">
+                            <i class="fa-solid fa-bullseye"></i>
+                        </div>
+                        <h3 class="text-xl font-serif font-bold text-emerald-800 mb-3">Our Mission</h3>
+                        <p class="text-slate-600 text-xs leading-relaxed">To provide accessible, high-quality secondary education that fosters intellectual curiosity, practical skills, and ethical leadership in every student.</p>
+                    </div>
+
+                    <div class="bg-white p-8 rounded-2xl shadow-md border-t-4 border-emerald-600">
+                        <div class="w-12 h-12 bg-emerald-600 text-white rounded-xl flex items-center justify-center text-xl mb-4">
+                            <i class="fa-solid fa-gem"></i>
+                        </div>
+                        <h3 class="text-xl font-serif font-bold text-emerald-800 mb-3">Core Values</h3>
+                        <p class="text-slate-600 text-xs leading-relaxed">Discipline, Faith, Integrity, Excellence, Innovation, Compassion, and Service to Community.</p>
+                    </div>
+                </div>
+
+                <!-- Showcase Banner featuring 1000131691.jpg -->
+                <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-200">
+                    <div class="grid lg:grid-cols-12 gap-8 items-center">
+                        <div class="lg:col-span-7 p-8 sm:p-12 space-y-4">
+                            <span class="bg-amber-100 text-gold-700 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Recognized Academic Excellence</span>
+                            <h3 class="text-2xl sm:text-3xl font-serif font-bold text-emerald-800">A Legacy of Distinction in Secondary Education</h3>
+                            <p class="text-slate-600 text-xs sm:text-sm leading-relaxed">
+                                Founded with a commitment to academic transformation, Sebulime Secondary School has grown into one of the country's most respected educational centers. Fully licensed and registered by the Ministry of Education and Sports, our campus is designed to inspire learning at every turn.
+                            </p>
+                            <p class="text-xs text-slate-500 font-semibold">Associated Image File: 1000131691.jpg</p>
+                        </div>
+                        
+                        <!-- Image Attachment (1000131691.jpg with Unsplash fallback) -->
+                        <div class="lg:col-span-5 cursor-pointer group" onclick="openLightbox('1000131691.jpg', 'Academic Excellence Recognition')">
+                            <img src="1000131691.jpg" alt="Sebulime School Academic Excellence Showcase" class="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1546410531-bb4caa6b424d?auto=format&fit=crop&w=800&q=80';">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= PAGE 3: ACADEMICS ================= -->
+        <section id="page-academics" class="page-section py-16">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <span class="text-emerald-700 font-bold text-xs uppercase tracking-widest bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200">Academic Programs</span>
+                    <h2 class="text-3xl sm:text-4xl font-serif font-bold text-emerald-800 mt-3">Comprehensive O-Level & A-Level Curriculum</h2>
+                    <p class="text-slate-600 mt-2">Tailored subject combinations preparing students for university education and future careers.</p>
+                </div>
+
+                <!-- Academic Levels Grid -->
+                <div class="grid md:grid-cols-2 gap-8 mb-16">
+                    
+                    <!-- O-Level -->
+                    <div class="bg-white p-8 rounded-2xl shadow-md border border-slate-200">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="w-12 h-12 bg-emerald-800 text-amber-300 rounded-xl flex items-center justify-center text-xl font-bold">
+                                O
+                            </div>
+                            <div>
+                                <h3 class="font-serif font-bold text-xl text-emerald-800">Ordinary Level (S.1 - S.4)</h3>
+                                <p class="text-xs text-slate-500">Uganda Certificate of Education (UCE)</p>
+                            </div>
+                        </div>
+                        <p class="text-xs text-slate-600 leading-relaxed mb-4">
+                            Following the NCDC competence-based lower secondary curriculum, developing practical thinking, creativity, and problem-solving skills.
+                        </p>
+                        <h4 class="text-xs font-bold text-emerald-800 uppercase tracking-wider mb-2">Core Subjects Offered:</h4>
+                        <div class="grid grid-cols-2 gap-2 text-xs text-slate-700">
+                            <span class="bg-slate-100 p-2 rounded"><i class="fa-solid fa-check text-emerald-600 mr-1.5"></i> Mathematics</span>
+                            <span class="bg-slate-100 p-2 rounded"><i class="fa-solid fa-check text-emerald-600 mr-1.5"></i> English Language</span>
+                            <span class="bg-slate-100 p-2 rounded"><i class="fa-solid fa-check text-emerald-600 mr-1.5"></i> Physics & Chemistry</span>
+                            <span class="bg-slate-100 p-2 rounded"><i class="fa-solid fa-check text-emerald-600 mr-1.5"></i> Biology & Agriculture</span>
+                            <span class="bg-slate-100 p-2 rounded"><i class="fa-solid fa-check text-emerald-600 mr-1.5"></i> Geography & History</span>
+                            <span class="bg-slate-100 p-2 rounded"><i class="fa-solid fa-check text-emerald-600 mr-1.5"></i> Computer Studies / ICT</span>
+                        </div>
+                    </div>
+
+                    <!-- A-Level -->
+                    <div class="bg-white p-8 rounded-2xl shadow-md border border-slate-200">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="w-12 h-12 bg-gold-600 text-white rounded-xl flex items-center justify-center text-xl font-bold">
+                                A
+                            </div>
+                            <div>
+                                <h3 class="font-serif font-bold text-xl text-emerald-800">Advanced Level (S.5 - S.6)</h3>
+                                <p class="text-xs text-slate-500">Uganda Advanced Certificate of Education (UACE)</p>
+                            </div>
+                        </div>
+                        <p class="text-xs text-slate-600 leading-relaxed mb-4">
+                            Specialized combinations in Sciences and Arts designed to maximize entry into university programs.
+                        </p>
+                        <h4 class="text-xs font-bold text-emerald-800 uppercase tracking-wider mb-2">Popular Combinations:</h4>
+                        <div class="space-y-2 text-xs text-slate-700">
+                            <div class="bg-slate-100 p-2 rounded font-semibold"><i class="fa-solid fa-flask text-gold-600 mr-2"></i> Science Streams: <span class="font-normal">PCM/ICT, BCM/Sub Math, PCB/Sub Math, MEG</span></div>
+                            <div class="bg-slate-100 p-2 rounded font-semibold"><i class="fa-solid fa-book text-gold-600 mr-2"></i> Arts & Humanities: <span class="font-normal">HEL/Sub Math, HEG/ICT, DEG/ICT, LED/ICT</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= PAGE 4: ADMISSIONS ================= -->
+        <section id="page-admissions" class="page-section py-16">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <span class="text-gold-600 font-bold text-xs uppercase tracking-widest bg-amber-50 px-3 py-1 rounded-full border border-amber-200">Enrollment Portal</span>
+                    <h2 class="text-3xl sm:text-4xl font-serif font-bold text-emerald-800 mt-3">Join Sebulime Secondary School</h2>
+                    <p class="text-slate-600 mt-2">Applications are currently open for Senior 1 to Senior 6 candidates.</p>
+                </div>
+
+                <!-- Admissions Banner featuring 1000131694.jpg -->
+                <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-200 mb-16">
+                    <div class="grid lg:grid-cols-12 gap-8 items-center">
+                        
+                        <!-- Image Attachment (1000131694.jpg with Unsplash fallback) -->
+                        <div class="lg:col-span-5 cursor-pointer group" onclick="openLightbox('1000131694.jpg', 'School Admissions & Registration Portal')">
+                            <img src="1000131694.jpg" alt="Sebulime Secondary School Admission Drive" class="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80';">
+                        </div>
+
+                        <div class="lg:col-span-7 p-8 space-y-4">
+                            <h3 class="text-2xl font-serif font-bold text-emerald-800">Admission Requirements & Documents</h3>
+                            <p class="text-xs text-slate-500 font-semibold">Image Attachment: 1000131694.jpg</p>
+                            <ul class="space-y-2 text-xs text-slate-600">
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-600"></i> Original and copy of PLE Results Slip for S.1 applicants.</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-600"></i> Original and copy of UCE Results Slip for S.5 applicants.</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-600"></i> Authentic recommendation letter from former school headteacher.</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-600"></i> 4 recent passport-size photographs of the student.</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-600"></i> Duly completed health declaration and registration form.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interactive Admission Form -->
+                <div class="bg-white p-8 sm:p-10 rounded-2xl shadow-xl border border-slate-200">
+                    <h3 class="text-2xl font-serif font-bold text-emerald-800 mb-6">Online Application Form</h3>
+                    
+                    <form onsubmit="handleFormSubmit(event, 'Application submitted successfully! Our admissions secretary will contact you within 24 hours.')" class="space-y-6 text-xs">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block font-bold text-slate-700 uppercase mb-2">Student's Full Name *</label>
+                                <input type="text" required placeholder="e.g. Mukasa John" class="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-600 focus:outline-none">
+                            </div>
+                            <div>
+                                <label class="block font-bold text-slate-700 uppercase mb-2">Class Applied For *</label>
+                                <select required class="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-600 focus:outline-none bg-white">
+                                    <option value="">Select Class...</option>
+                                    <option>Senior 1 (O-Level)</option>
+                                    <option>Senior 2 (O-Level)</option>
+                                    <option>Senior 3 (O-Level)</option>
+                                    <option>Senior 5 (A-Level Arts)</option>
+                                    <option>Senior 5 (A-Level Sciences)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block font-bold text-slate-700 uppercase mb-2">Parent / Guardian Name *</label>
+                                <input type="text" required placeholder="Full name of parent" class="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-600 focus:outline-none">
+                            </div>
+                            <div>
+                                <label class="block font-bold text-slate-700 uppercase mb-2">Phone Number *</label>
+                                <input type="tel" required placeholder="+256 700 000 000" class="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-600 focus:outline-none">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block font-bold text-slate-700 uppercase mb-2">Former School & Aggregates / Grades</label>
+                            <input type="text" placeholder="e.g. Kampala Primary School - Agg 8" class="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-600 focus:outline-none">
+                        </div>
+
+                        <button type="submit" class="bg-emerald-800 hover:bg-emerald-700 text-white font-bold px-8 py-3.5 rounded-xl text-xs uppercase tracking-wider transition-all shadow-lg">
+                            Submit Admission Application &rarr;
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= PAGE 5: STUDENT LIFE ================= -->
+        <section id="page-studentlife" class="page-section py-16">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <span class="text-emerald-700 font-bold text-xs uppercase tracking-widest bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200">Campus Experience</span>
+                    <h2 class="text-3xl sm:text-4xl font-serif font-bold text-emerald-800 mt-3">Vibrant Student Life & Community</h2>
+                    <p class="text-slate-600 mt-2">Balancing academic dedication with extracurricular growth and character development.</p>
+                </div>
+
+                <!-- Showcase Banner featuring 1000131692.jpg -->
+                <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-200 mb-16">
+                    <div class="grid md:grid-cols-12 gap-8 items-center">
+                        
+                        <!-- Image Attachment (1000131692.jpg with Unsplash fallback) -->
+                        <div class="md:col-span-6 cursor-pointer group" onclick="openLightbox('1000131692.jpg', 'Classroom Learning & Student Commitment')">
+                            <img src="1000131692.jpg" alt="Student Life Commitment at Sebulime" class="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=800&q=80';">
+                        </div>
+
+                        <div class="md:col-span-6 p-8 space-y-4">
+                            <span class="bg-emerald-100 text-emerald-800 font-bold text-xs px-3 py-1 rounded-full uppercase tracking-wider">Commitment to Growth</span>
+                            <h3 class="text-2xl font-serif font-bold text-emerald-800">Classroom Engagement & Friendship</h3>
+                            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                                At Sebulime Secondary School, students build lifelong friendships, learn team collaboration, and foster a strong commitment to learning inside modern, well-lit classrooms supervised by friendly instructors.
+                            </p>
+                            <p class="text-xs text-slate-500 font-semibold">Image File: 1000131692.jpg</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Extracurricular Activities Grid -->
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+                        <i class="fa-solid fa-futbol text-gold-600 text-3xl mb-3"></i>
+                        <h4 class="font-serif font-bold text-lg text-emerald-800 mb-2">Sports & Athletics</h4>
+                        <p class="text-xs text-slate-600">Football, Netball, Volleyball, Basketball, Athletics, and Table Tennis competitions across regional schools.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+                        <i class="fa-solid fa-comments text-gold-600 text-3xl mb-3"></i>
+                        <h4 class="font-serif font-bold text-lg text-emerald-800 mb-2">Debate & Writers Club</h4>
+                        <p class="text-xs text-slate-600">Empowering public speaking, critical reasoning, essay writing, and journalism skills.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+                        <i class="fa-solid fa-music text-gold-600 text-3xl mb-3"></i>
+                        <h4 class="font-serif font-bold text-lg text-emerald-800 mb-2">Music, Dance & Drama</h4>
+                        <p class="text-xs text-slate-600">Annual cultural galas, choir performances, traditional dance, and theatrical plays.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= PAGE 6: GALLERY ================= -->
+        <section id="page-gallery" class="page-section py-16">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <span class="text-gold-600 font-bold text-xs uppercase tracking-widest bg-amber-50 px-3 py-1 rounded-full border border-amber-200">Photo Gallery</span>
+                    <h2 class="text-3xl sm:text-4xl font-serif font-bold text-emerald-800 mt-3">Campus Moments & Events</h2>
+                    <p class="text-slate-600 mt-2">Click on any picture to view in full size.</p>
+                </div>
+
+                <!-- Gallery Grid featuring ALL 5 Uploaded Images with Unsplash Fallbacks -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                    
+                    <!-- Gallery Item 1 (1000080351.jpg) -->
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden border border-slate-200 group cursor-pointer" onclick="openLightbox('1000080351.jpg', 'Mr. Sebulime - Founder & Director')">
+                        <div class="h-64 overflow-hidden relative">
+                            <img src="1000080351.jpg" alt="Director Sebulime" class="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-500" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=800&q=80';">
+                            <div class="absolute inset-0 bg-emerald-800/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                <i class="fa-solid fa-magnifying-glass-plus text-white text-3xl"></i>
+                            </div>
+                        </div>
+                        <div class="p-4 bg-emerald-800 text-white">
+                            <h4 class="font-bold text-sm font-serif">School Leadership</h4>
+                            <p class="text-[11px] text-amber-300">Mr. Sebulime (1000080351.jpg)</p>
+                        </div>
+                    </div>
+
+                    <!-- Gallery Item 2 (1000131693.jpg) -->
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden border border-slate-200 group cursor-pointer" onclick="openLightbox('1000131693.jpg', 'International Learning Environment')">
+                        <div class="h-64 overflow-hidden relative">
+                            <img src="1000131693.jpg" alt="International School Atmosphere" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=800&q=80';">
+                            <div class="absolute inset-0 bg-emerald-800/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                <i class="fa-solid fa-magnifying-glass-plus text-white text-3xl"></i>
+                            </div>
+                        </div>
+                        <div class="p-4 bg-emerald-800 text-white">
+                            <h4 class="font-bold text-sm font-serif">Modern Campus Portal</h4>
+                            <p class="text-[11px] text-amber-300">International Standard (1000131693.jpg)</p>
+                        </div>
+                    </div>
+
+                    <!-- Gallery Item 3 (1000131694.jpg) -->
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden border border-slate-200 group cursor-pointer" onclick="openLightbox('1000131694.jpg', 'School Admission Drive')">
+                        <div class="h-64 overflow-hidden relative">
+                            <img src="1000131694.jpg" alt="Admission Registration" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80';">
+                            <div class="absolute inset-0 bg-emerald-800/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                <i class="fa-solid fa-magnifying-glass-plus text-white text-3xl"></i>
+                            </div>
+                        </div>
+                        <div class="p-4 bg-emerald-800 text-white">
+                            <h4 class="font-bold text-sm font-serif">Open Admissions</h4>
+                            <p class="text-[11px] text-amber-300">Registration Drive (1000131694.jpg)</p>
+                        </div>
+                    </div>
+
+                    <!-- Gallery Item 4 (1000131692.jpg) -->
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden border border-slate-200 group cursor-pointer" onclick="openLightbox('1000131692.jpg', 'Classroom Learning Commitment')">
+                        <div class="h-64 overflow-hidden relative">
+                            <img src="1000131692.jpg" alt="Classroom Learning" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=800&q=80';">
+                            <div class="absolute inset-0 bg-emerald-800/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                <i class="fa-solid fa-magnifying-glass-plus text-white text-3xl"></i>
+                            </div>
+                        </div>
+                        <div class="p-4 bg-emerald-800 text-white">
+                            <h4 class="font-bold text-sm font-serif">Interactive Classes</h4>
+                            <p class="text-[11px] text-amber-300">Dedicated Learners (1000131692.jpg)</p>
+                        </div>
+                    </div>
+
+                    <!-- Gallery Item 5 (1000131691.jpg) -->
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden border border-slate-200 group cursor-pointer" onclick="openLightbox('1000131691.jpg', 'School Recognition')">
+                        <div class="h-64 overflow-hidden relative">
+                            <img src="1000131691.jpg" alt="School Recognition" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1546410531-bb4caa6b424d?auto=format&fit=crop&w=800&q=80';">
+                            <div class="absolute inset-0 bg-emerald-800/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                <i class="fa-solid fa-magnifying-glass-plus text-white text-3xl"></i>
+                            </div>
+                        </div>
+                        <div class="p-4 bg-emerald-800 text-white">
+                            <h4 class="font-bold text-sm font-serif">Academic Distinction</h4>
+                            <p class="text-[11px] text-amber-300">School Recognition (1000131691.jpg)</p>
+                        </div>
+                    </div>
+
+                    <!-- Gallery Placeholder Card -->
+                    <div class="bg-slate-100 rounded-xl border-2 border-dashed border-slate-300 flex flex-col items-center justify-center p-8 text-center">
+                        <i class="fa-solid fa-camera text-4xl text-emerald-700 mb-3"></i>
+                        <h4 class="font-bold text-emerald-800 text-sm">More Photos Added Weekly</h4>
+                        <p class="text-xs text-slate-500 mt-1">Follow our official social media handles for full sports and event galleries.</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= PAGE 7: NEWS & EVENTS ================= -->
+        <section id="page-news" class="page-section py-16">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <span class="text-emerald-700 font-bold text-xs uppercase tracking-widest bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200">School Calendar</span>
+                    <h2 class="text-3xl sm:text-4xl font-serif font-bold text-emerald-800 mt-3">Latest Announcements & Upcoming Events</h2>
+                    <p class="text-slate-600 mt-2">Stay informed on term dates, visitation days, and academic updates.</p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="bg-white p-6 rounded-2xl shadow-md border-l-4 border-emerald-800">
+                        <span class="text-[10px] bg-emerald-100 text-emerald-800 font-bold px-2.5 py-1 rounded uppercase">Admissions</span>
+                        <h3 class="font-serif font-bold text-lg text-emerald-800 mt-3 mb-2">Senior 1 &amp; 5 Interviews Ongoing</h3>
+                        <p class="text-xs text-slate-500 mb-3"><i class="fa-regular fa-calendar text-gold-600 mr-2"></i> Term Intake 2026</p>
+                        <p class="text-xs text-slate-600 leading-relaxed">Parents and candidates are advised to bring PLE/UCE result slips to the campus main administration block.</p>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-2xl shadow-md border-l-4 border-gold-600">
+                        <span class="text-[10px] bg-amber-100 text-gold-700 font-bold px-2.5 py-1 rounded uppercase">Community</span>
+                        <h3 class="font-serif font-bold text-lg text-emerald-800 mt-3 mb-2">Annual General Parent-Teacher Meeting</h3>
+                        <p class="text-xs text-slate-500 mb-3"><i class="fa-regular fa-calendar text-gold-600 mr-2"></i> Upcoming Term</p>
+                        <p class="text-xs text-slate-600 leading-relaxed">Join us for our termly consultation session to review student academic progress and infrastructural developments.</p>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-2xl shadow-md border-l-4 border-emerald-600">
+                        <span class="text-[10px] bg-emerald-100 text-emerald-800 font-bold px-2.5 py-1 rounded uppercase">Exams</span>
+                        <h3 class="font-serif font-bold text-lg text-emerald-800 mt-3 mb-2">UNEB Examinations Preparation</h3>
+                        <p class="text-xs text-slate-500 mb-3"><i class="fa-regular fa-calendar text-gold-600 mr-2"></i> Candidate Term</p>
+                        <p class="text-xs text-slate-600 leading-relaxed">Special briefing and revision camps for Senior 4 and Senior 6 candidates commence next week.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= PAGE 8: CONTACT US ================= -->
+        <section id="page-contact" class="page-section py-16">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <span class="text-gold-600 font-bold text-xs uppercase tracking-widest bg-amber-50 px-3 py-1 rounded-full border border-amber-200">Contact Portal</span>
+                    <h2 class="text-3xl sm:text-4xl font-serif font-bold text-emerald-800 mt-3">Get in Touch with Administration</h2>
+                    <p class="text-slate-600 mt-2">We are here to answer all your inquiries regarding enrollment, fees structure, and school visits.</p>
+                </div>
+
+                <div class="grid lg:grid-cols-12 gap-8">
+                    <!-- Contact Information Box -->
+                    <div class="lg:col-span-5 bg-emerald-800 text-white p-8 sm:p-10 rounded-2xl shadow-xl flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-serif text-2xl font-bold text-amber-300 mb-6">School Contact Details</h3>
+                            
+                            <div class="space-y-6 text-xs">
+                                <div class="flex items-start gap-4">
+                                    <div class="w-10 h-10 bg-emerald-700 rounded-lg flex items-center justify-center text-amber-300 text-lg flex-shrink-0">
+                                        <i class="fa-solid fa-location-dot"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold uppercase text-amber-300">Campus Location</h4>
+                                        <p class="text-slate-200 mt-1">Sebulime Secondary School Main Campus, Kampala, Uganda</p>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-start gap-4">
+                                    <div class="w-10 h-10 bg-emerald-700 rounded-lg flex items-center justify-center text-amber-300 text-lg flex-shrink-0">
+                                        <i class="fa-solid fa-phone"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold uppercase text-amber-300">Phone Numbers</h4>
+                                        <p class="text-slate-200 mt-1">+256 (0) 700 123 456 / +256 (0) 770 987 654</p>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-start gap-4">
+                                    <div class="w-10 h-10 bg-emerald-700 rounded-lg flex items-center justify-center text-amber-300 text-lg flex-shrink-0">
+                                        <i class="fa-solid fa-envelope"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold uppercase text-amber-300">Email Address</h4>
+                                        <p class="text-slate-200 mt-1">info@sebulime.edu.ug / admissions@sebulime.edu.ug</p>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-start gap-4">
+                                    <div class="w-10 h-10 bg-emerald-700 rounded-lg flex items-center justify-center text-amber-300 text-lg flex-shrink-0">
+                                        <i class="fa-solid fa-clock"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold uppercase text-amber-300">Office Working Hours</h4>
+                                        <p class="text-slate-200 mt-1">Monday - Friday: 8:00 AM - 5:00 PM<br>Saturday: 9:00 AM - 1:00 PM</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contact Form -->
+                    <div class="lg:col-span-7 bg-white p-8 sm:p-10 rounded-2xl shadow-xl border border-slate-200">
+                        <h3 class="text-2xl font-serif font-bold text-emerald-800 mb-6">Send an Online Inquiry</h3>
+                        
+                        <form onsubmit="handleFormSubmit(event, 'Thank you! Your message has been sent to the Sebulime School administration.')" class="space-y-6 text-xs">
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block font-bold text-slate-700 uppercase mb-2">Your Name *</label>
+                                    <input type="text" required placeholder="Full Name" class="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-600 focus:outline-none">
+                                </div>
+                                <div>
+                                    <label class="block font-bold text-slate-700 uppercase mb-2">Phone / Email *</label>
+                                    <input type="text" required placeholder="Phone number or email" class="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-600 focus:outline-none">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block font-bold text-slate-700 uppercase mb-2">Subject</label>
+                                <input type="text" placeholder="e.g. Fees Structure Inquiry" class="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-600 focus:outline-none">
+                            </div>
+
+                            <div>
+                                <label class="block font-bold text-slate-700 uppercase mb-2">Your Message *</label>
+                                <textarea rows="4" required placeholder="Type your inquiry here..." class="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-600 focus:outline-none"></textarea>
+                            </div>
+
+                            <button type="submit" class="bg-emerald-800 hover:bg-emerald-700 text-white font-bold px-8 py-3.5 rounded-xl text-xs uppercase tracking-wider transition-all shadow-lg">
+                                Send Message &rarr;
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- LIGHTBOX / MODAL VIEWER FOR ATTACHED IMAGES -->
+    <div id="lightbox" class="fixed inset-0 bg-black/90 z-50 hidden flex-col items-center justify-center p-4">
+        <button onclick="closeLightbox()" class="absolute top-5 right-5 text-white text-3xl hover:text-amber-300 transition-colors">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        <div class="max-w-4xl max-h-[85vh] text-center">
+            <img id="lightbox-img" src="" alt="Full View" class="max-w-full max-h-[75vh] object-contain mx-auto rounded-lg border-2 border-white/20">
+            <p id="lightbox-caption" class="text-white font-serif text-lg mt-4 text-amber-300"></p>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="bg-emerald-950 text-slate-300 text-xs py-12 border-t border-emerald-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center gap-2 mb-4">
+                        <div class="w-8 h-8 bg-gold-600 rounded-full flex items-center justify-center text-white font-bold">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                        </div>
+                        <span class="font-serif font-bold text-base text-white">SEBULIME S.S.</span>
+                    </div>
+                    <p class="text-slate-400 text-xs leading-relaxed">Providing high quality, affordable secondary education with strong moral values and scientific excellence.</p>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-amber-300 uppercase tracking-wider mb-3">Quick Navigation</h4>
+                    <ul class="space-y-1.5 text-slate-300">
+                        <li><button onclick="navigateTo('home')" class="hover:underline">Home Page</button></li>
+                        <li><button onclick="navigateTo('about')" class="hover:underline">About Our School</button></li>
+                        <li><button onclick="navigateTo('academics')" class="hover:underline">Academics &amp; Subjects</button></li>
+                        <li><button onclick="navigateTo('admissions')" class="hover:underline">Admissions &amp; Forms</button></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-amber-300 uppercase tracking-wider mb-3">Student Life</h4>
+                    <ul class="space-y-1.5 text-slate-300">
+                        <li><button onclick="navigateTo('studentlife')" class="hover:underline">Clubs &amp; Sports</button></li>
+                        <li><button onclick="navigateTo('gallery')" class="hover:underline">Photo Gallery</button></li>
+                        <li><button onclick="navigateTo('news')" class="hover:underline">School Calendar</button></li>
+                        <li><button onclick="navigateTo('contact')" class="hover:underline">Contact Office</button></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-amber-300 uppercase tracking-wider mb-3">Connect With Us</h4>
+                    <div class="flex gap-3 text-lg mb-4">
+                        <a href="#" class="w-8 h-8 bg-emerald-900 rounded flex items-center justify-center hover:bg-gold-600 transition-colors"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" class="w-8 h-8 bg-emerald-900 rounded flex items-center justify-center hover:bg-gold-600 transition-colors"><i class="fa-brands fa-x-twitter"></i></a>
+                        <a href="#" class="w-8 h-8 bg-emerald-900 rounded flex items-center justify-center hover:bg-gold-600 transition-colors"><i class="fa-brands fa-youtube"></i></a>
+                    </div>
+                    <p class="text-[11px] text-slate-400">Kampala, Uganda</p>
+                </div>
+            </div>
+
+            <div class="border-t border-emerald-900/60 pt-6 text-center text-slate-500 text-[11px]">
+                <p>&copy; 2026 Sebulime Secondary School. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- INTERACTIVE NAVIGATION SCRIPT -->
+    <script>
+        // 8-Page Tab Navigation Handler
+        function navigateTo(pageId) {
+            const pages = document.querySelectorAll('.page-section');
+            pages.forEach(page => page.classList.remove('active'));
+
+            const targetPage = document.getElementById('page-' + pageId);
+            if (targetPage) {
+                targetPage.classList.add('active');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+
+            // Update Active State on Nav Buttons
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                if (link.getAttribute('data-page') === pageId) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+        }
+
+        // Mobile Navigation Drawer Toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Lightbox Modal Functionality for Images
+        function openLightbox(imgSrc, caption) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            const lightboxCaption = document.getElementById('lightbox-caption');
+
+            lightboxImg.src = imgSrc;
+            lightboxCaption.textContent = caption;
+            lightbox.classList.remove('hidden');
+            lightbox.classList.add('flex');
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.add('hidden');
+            lightbox.classList.remove('flex');
+        }
+
+        // Generic Form Submission Handler
+        function handleFormSubmit(event, successMessage) {
+            event.preventDefault();
+            alert(successMessage);
+            event.target.reset();
+        }
+
+        // Default Load Page
+        document.addEventListener('DOMContentLoaded', () => {
+            navigateTo('home');
+        });
+    </script>
+</body>
+</html>
